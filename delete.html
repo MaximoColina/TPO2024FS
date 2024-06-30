@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar un producto</title>
+</head>
+<body>
+    <h1>Borrando producto</h1>
+    <div id="producto-detalles">
+
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        console.log(productId); 
+
+        if (productId){
+            fetch(`/api/productos/delete/${productId}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Contenedor donde se mostrará el producto
+                    const productoDetalles = document.querySelector('#producto-detalles');
+                    
+                    if (data.success) {
+                        productoDetalles.innerHTML = `<h1>${data.message}</h1>`;
+                    } else {
+                        productoDetalles.innerHTML = `<h1>Error: ${data.message}</h1>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al eliminar el producto:', error);
+                    document.querySelector("#producto-detalles").innerHTML = "<h1>Error al eliminar el producto</h1>";
+                });
+        }else {
+            document.querySelector("#producto-detalles").innerHTML = "<h1>No se encontró el producto</h1>";
+        }
+    </script>
+</body>
+</html>
