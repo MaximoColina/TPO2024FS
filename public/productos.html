@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vinos</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+    .container{
+        display: grid; 
+        grid-template-columns: 200px 1fr;
+        gap: 0px 0.8rem; 
+    }
+    .container nav{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        gap: 0.8rem;
+        padding: 1rem;
+        justify-content: start;
+        font-weight: bold;
+    }
+    .container nav a{
+        text-decoration: none;
+        color: #333; 
+    }
+    .container main{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .container main .list-product{
+        display: grid; 
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.8rem; 
+    }
+    .container main .list-product .item{
+        display: flex;
+        flex-direction: column;
+        gap: 2.5px; 
+        align-items: center;
+        width: 250px;
+        height: 500px;
+        border: 1px solid #666;
+        padding: 10px;
+        background-color:white ;
+        cursor: pointer;
+    }
+
+    .container main .list-product .item .img-item{
+        position: relative;
+        aspect-ratio: 1/2;
+        width: 120px;
+    }
+
+    .container main .list-product .item .titulo-item{
+        width: 250px;
+        height: auto;
+        font-weight: bold;
+        overflow: hidden;
+        text-align: center;
+        background-color: white;
+        align-content: center;
+    }
+
+    .container main .list-product .item .precio-item{
+        display: block;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .container main .list-product .item .boton-item{
+        display: block;
+        margin: 10px auto;
+        border: none;
+        background-color: rgb(185, 133, 98);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease-out;
+    }
+
+    .container main .list-product .item .boton-item:hover{
+        background-color: rgb(237, 189, 157, 0.8);
+    }
+    .container main h1{
+        display: block;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <a href="http://localhost:5001/create">Agregar Producto</a>
+        </nav>
+        <main>
+            <h1>LISTA DE VINOS </h1>
+            <div class="list-product">
+                
+            </div>
+        </main>
+    </div>  
+    <script>
+        fetch('http://localhost:5001/api/productos')
+            .then(res => res.json())
+            .then(data =>{
+                const content = document.querySelector('.list-product');   
+                data.forEach((element, key) => {
+                    const product = document.createElement('div'); 
+                    product.className = 'item'; 
+                    console.log(element); 
+                    const stock = element.stock != null ? 'Stock '+ element.stock : 'Sin Stock'; 
+                    console.log(stock); 
+                    product.innerHTML = `
+                    <div class="titulo-item">${element.nombre}</div>
+                    <div class="box-imagen"> <img src="./imagenes/6.png" alt="" class="img-item"> </div>
+                    <div class="precio-item">$${element.precio}</div>
+                    <div style="color: green">${stock}</div> 
+                    <button class="boton-item">Agregar al Carrito</button>
+                    <a href="http://localhost:5001/update.html?id=${element.id}" class="boton-item">Editar</a>
+                    <a href="http://localhost:5001/delete.html?id=${element.id}" class="boton-item">Eliminar</a>
+                     `;
+                    content.appendChild(product); 
+                });
+            })
+    </script>
+</body>
+</html>

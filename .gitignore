@@ -1,0 +1,6 @@
+.vscode
+.env
+Datos\vinos.txt
+vinos.sql
+vinos2.sql
+node_modules
