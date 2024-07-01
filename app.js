@@ -35,6 +35,7 @@ app.get('*', (req, res) => {
 });
 const PORT = 5001;
 app.listen(PORT, ()=>{
-    console.log(`Server in running on port ${PORT}`); 
-    console.log(process.env.DB_HOST, process.env.DB_USER);
+    console.log(`Server in running on port ${process.env.MYSQL_ADDON_PORT}`); 
+    console.log(process.env.MYSQL_ADDON_HOST, process.env.MYSQL_ADDON_USER);
+    // console.log(process.env.DB_HOST, process.env.DB_USER);
 })
