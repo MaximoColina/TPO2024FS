@@ -807,3 +807,17 @@ input[type="submit"]{
             height: 70vh;  
         }
     }
+
+
+
+    /* Para el contador de productos. */
+    nav .menu-right .productos-carrito{
+        position: absolute;
+        bottom: 20px;
+    }
+    
+    /* Para el scroll en el inicio de sesión */
+    .div-form {
+         height: auto;
+         overflow: scroll;
+    }  
