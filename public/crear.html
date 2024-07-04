@@ -6,16 +6,26 @@
     <title>Crear un nuevo Producto</title>
 </head>
 <style>
+    body{
+        background-image: url(../imagenes/Nuestros_vinos.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     main {
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        align-items: center;
+        color: white;
     }
-    
+    main h1{
+        color: white;
+    }
     main form{
         display: flex;
         flex-direction: column;
         width: 30%;
+        backdrop-filter: blur(10px);
         border: 1px solid #ccc;
         border-radius: 8px;
         padding: 0.8rem;
@@ -42,7 +52,7 @@
         <h1>CARGAR EL PRODUCTO</h1>
         <form action="/api/productos" method="POST" enctype="multipart/form-data">
             <label for="id_categoria">ID Categoria</label>
-            <input type="text" name="id_categoria" title="id_categoria" id="id_categoria" required>
+            <input type="text" name="id_categoria" title="id_categoria" id="id_categoria" required >
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" title="Nombre" required autocomplete="off">
             <label for="precio">Precio</label>
@@ -56,11 +66,5 @@
             <input type="submit" value="Enviar">
         </form>
     </main> 
-    <script>
-        //const url = new URL(window.location.href); 
-        //console.log(url); 
-        //const params = new URLSearchParams(url.search); 
-        //console.log(params); 
-    </script>
 </body>
 </html>
