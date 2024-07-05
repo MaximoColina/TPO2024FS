@@ -36,43 +36,43 @@
                     </div>
                 </div>
                 <h2 class="titulo-registro">Registro</h2>
-                <form class="form-login" action="">
+                <form class="form-login" id="form-register" method="POST" enctype="multipart/form-data">
                     <label for="name">Nombre de Usuario</label>
-                    <input type="text" name="name">
-                    <label for="contrasena">Contraseña</label>
-                    <input type="password" name="contrasena">
-                    <label for="contraseña-repetida">Repetir Contraseña</label>
-                    <input type="password" name="contraseña-repetida">
-                    <button class="boton-inicio-sesion">Registrarse</button>
+                    <input type="text" name="name" required>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" required>
+                    <label for="passwordConfirm">Confirmar contraseña</label>
+                    <input type="password" name="passwordConfirm" id="passwordConfirm" required>
+                    <input type="submit" value="Registrarse"/>
                 </form>
             </div>
         </section>
     </main> 
-    <footer id="contacto">
-        <div class="footer-marco">
-            <h2 class="footer-texto-titulo">CONTACTO</h2>
-            <h2 class="footer-texto-titulo">REDES SOCIALES</h2>
-            <h2 class="footer-texto-titulo">MEDIOS DE PAGO</h2>
+    <script>
+        const form = document.getElementById('form-register'); 
+        form.addEventListener('submit', (event) =>{
+            event.preventDefault();
 
-            <div class="footer-cuadro-contacto" > 
-                <div>Teléfonos: 4816-2223 · 4816-3975</div>
-                <div>Email: info@grandcru.com.ar</div>
-                <div>Dirección: Rodríguez Peña 1886 · CABA</div>
-            </div>
-
-            <div class="footer-cuadro-medios">
-                <div> <a href="https://www.facebook.com/grandcruvinhos" target="_blank"><i class="fa-brands fa-square-facebook"></i> </a></div>
-                <div> <a href="https://instagram.com/grandcruarg" target="_blank"><i class="fa-brands fa-square-instagram"></i> </a></div>
-                <div> <a href="https://www.youtube.com/watch?v=i2pF1BgAKJE" target="_blank"><i class="fa-brands fa-youtube"></i> </a></div>
-            </div>
-
-            <div class="footer-cuadro-medios">
-                <div> <i class="fa-brands fa-cc-paypal"></i> </div>
-                <div> <i class="fa-brands fa-cc-mastercard"></i> </div>
-                <div> <i class="fa-brands fa-cc-visa"></i> </div>
-            </div>
-        </div>
-    
-    </footer>
+            const dataform = new FormData(form); 
+            console.log(dataform);
+            fetch('/api/register', {
+                method: 'POST',
+                body: dataform 
+            })
+            .then(response => response.json())
+            .then(data =>{
+                if (data.success){
+                    alert('Registrado correctamente'); 
+                    setTimeout(()=>{
+                        window.location.href = '/index.html'; 
+                    }, 2000)
+                }else{
+                    alert('Error al crear el usuario'); 
+                }
+            })
+        })
+    </script>
 </body>
 </html>

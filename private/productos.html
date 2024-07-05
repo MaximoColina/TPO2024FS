@@ -129,8 +129,8 @@
 <body>
     <div class="container">
         <nav class="sidebar">
-            <a href="./create" class="boton-item">Agregar Producto</a>
-            <a href="/index.html" class="boton-item">Inicio</a>
+            <a href="/private/crear.html" class="boton-item">Agregar Producto</a>
+            <a href="/public/index.html" class="boton-item">Inicio</a>
         </nav>
         <main>
             <h1>LISTA DE VINOS </h1>
@@ -148,19 +148,15 @@
                     const product = document.createElement('div'); 
                     product.className = 'item'; 
                     console.log(element); 
-
-console.log(data);
-console.log("aqui");
-
                     const stock = element.stock != null ? 'Stock '+ element.stock : 'Sin Stock'; 
                     console.log(stock); 
                     product.innerHTML = `
                     <div class="titulo-item">${element.nombre}</div>
-                    <div class="box-imagen"> <img src="./upload/${element.imagen}" alt="" class="img-item"> </div>
+                    <div class="box-imagen"> <img src="/upload/${element.imagen}" alt="" class="img-item"> </div>
                     <div class="precio-item">$${element.precio}</div>
                     <div style="color: green">${stock}</div> 
-                    <a href="./update.html?id=${element.id}" class="boton-item">Editar</a>
-                    <a href="./delete.html?id=${element.id}" class="boton-item">Eliminar</a>
+                    <a href="/private/update.html?id=${element.id}" class="boton-item">Editar</a>
+                    <a href="/private/delete.html?id=${element.id}" class="boton-item">Eliminar</a>
                      `;
                     content.appendChild(product); 
                 });

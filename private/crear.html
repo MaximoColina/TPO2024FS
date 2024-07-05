@@ -50,7 +50,7 @@
 <body>
     <main>
         <h1>CARGAR EL PRODUCTO</h1>
-        <form action="/api/productos" method="POST" enctype="multipart/form-data">
+        <form id="form-product" method="POST" enctype="multipart/form-data">
             <label for="id_categoria">ID Categoria</label>
             <input type="text" name="id_categoria" title="id_categoria" id="id_categoria" required >
             <label for="nombre">Nombre</label>
@@ -66,5 +66,31 @@
             <input type="submit" value="Enviar">
         </form>
     </main> 
+    <script>
+        const form = document.getElementById('form-product');
+        form.addEventListener('submit', (event) =>{
+            event.preventDefault(); 
+
+            const dataform = new FormData(form); 
+            console.log(dataform); 
+            fetch('/api/productos', {
+                method: 'POST',
+                body: dataform
+            })
+                .then(response => response.json())
+                .then(data =>{
+                    console.log(data); 
+                    if (data.success){
+                        alert('Producto creado correctamente'); 
+                        setTimeout(()=>{
+                            window.location.href = '/private/productos.html'; 
+                        }, 2000)
+                    }else{
+                        alert('Error al crear el producto'); 
+                    }
+                })
+        })
+        
+    </script>
 </body>
 </html>

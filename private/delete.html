@@ -24,6 +24,10 @@
                     
                     if (data.success) {
                         productoDetalles.innerHTML = `<h1>${data.message}</h1>`;
+                        /*Redirigimos a la pagina*/
+                        setTimeout(()=>{
+                            window.location.href = '/private/productos.html';
+                        }, 2000); 
                     } else {
                         productoDetalles.innerHTML = `<h1>Error: ${data.message}</h1>`;
                     }

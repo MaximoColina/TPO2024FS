@@ -36,11 +36,11 @@
                     </div>
                 </div>
                 
-                <form class="form-login" action="">
-                    <label for="name">Nombre de Usuario</label>
-                    <input type="text" name="name">
-                    <label for="contrasena">Contraseña</label>
-                    <input type="password" name="contrasena">
+                <form class="form-login" action="/api/login" method="POST">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" required>
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" required>
                     <button class="boton-inicio-sesion">Iniciar Sesión</button>
                 </form>
                 <p>¿No tienes una cuenta? 
@@ -49,31 +49,5 @@
             </div>
         </section>
     </main> 
-    <footer id="contacto">
-        <div class="footer-marco">
-            <h2 class="footer-texto-titulo">CONTACTO</h2>
-            <h2 class="footer-texto-titulo">REDES SOCIALES</h2>
-            <h2 class="footer-texto-titulo">MEDIOS DE PAGO</h2>
-
-            <div class="footer-cuadro-contacto" > 
-                <div>Teléfonos: 4816-2223 · 4816-3975</div>
-                <div>Email: info@grandcru.com.ar</div>
-                <div>Dirección: Rodríguez Peña 1886 · CABA</div>
-            </div>
-
-            <div class="footer-cuadro-medios">
-                <div> <a href="https://www.facebook.com/grandcruvinhos" target="_blank"><i class="fa-brands fa-square-facebook"></i> </a></div>
-                <div> <a href="https://instagram.com/grandcruarg" target="_blank"><i class="fa-brands fa-square-instagram"></i> </a></div>
-                <div> <a href="https://www.youtube.com/watch?v=i2pF1BgAKJE" target="_blank"><i class="fa-brands fa-youtube"></i> </a></div>
-            </div>
-
-            <div class="footer-cuadro-medios">
-                <div> <i class="fa-brands fa-cc-paypal"></i> </div>
-                <div> <i class="fa-brands fa-cc-mastercard"></i> </div>
-                <div> <i class="fa-brands fa-cc-visa"></i> </div>
-            </div>
-        </div>
-    
-    </footer>
 </body>
 </html>
