@@ -42,16 +42,16 @@
         "dest": "/public/js/$1"
       },
       {
-        "src": "../db/(.*)",
-        "dest": "../db/$1"
+        "src": "./db/(.*)",
+        "dest": "./db/$1"
       },
       {
-        "src": "../controller/(.*)",
-        "dest": "../controller/$1"
+        "src": "./controller/(.*)",
+        "dest": "./controller/$1"
       },
       {
-        "src": "../routes/(.*)",
-        "dest": "../routes/$1"
+        "src": "./routes/(.*)",
+        "dest": "./routes/$1"
       },
       {
         "src": "/private/(.*)",
