@@ -8,7 +8,7 @@ require('dotenv').config();
 const crearUsuario = async (req, res) =>{
     console.log(req.body);
     const {name, email, password, passwordConfirm} = req.body; 
-    const rol = 2; // cambio user por 2 usuario
+    const rol = 1; // cambio admin 1 o user por 2 usuario
     console.log(name, email, password, passwordConfirm, rol);
     try{    
         const hashedPassword = await bcrypt.hash(password, 10);
