@@ -72,4 +72,6 @@ const PORT = 5001;
 app.listen(PORT, ()=>{
     console.log(`Server in running on port ${PORT}`); 
 //    console.log(process.env.DB_HOST, process.env.DB_USER);
-})
+});
+
+module.exports = app;
