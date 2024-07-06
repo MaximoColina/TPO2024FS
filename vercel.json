@@ -53,7 +53,10 @@
         "src": "../routes/(.*)",
         "dest": "../routes/$1"
       },
-
+      {
+        "src": "/private/(.*)",
+        "dest": "/private/$1"
+      },
 
 
       {
