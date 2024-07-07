@@ -42,10 +42,7 @@
         "dest": "/public/js/$1"
       },
 
-      {
-        "src": "./db/db.js",
-        "dest": "./db/$1"
-      },
+
 
       {
         "src": "/(.*)",
