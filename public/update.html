@@ -103,9 +103,9 @@
                     .then(response => response.json())
                     .then(data => {
                         if(data.success){
-                            alert('Producto actualizado correctamente'); 
+                            alert("Producto actualizado correctamente"); 
                             setTimeout(()=>{
-                                window.location.href = '/private/productos.html'; 
+                                window.location.href = '/admin'; 
                             }, 2000); 
                         }else{
                             alert('Error al actualizar el producto: '+ data.message); 

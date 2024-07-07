@@ -129,8 +129,8 @@
 <body>
     <div class="container">
         <nav class="sidebar">
-            <a href="/private/crear.html" class="boton-item">Agregar Producto</a>
-            <a href="/public/index.html" class="boton-item">Inicio</a>
+            <a href="/crear.html" class="boton-item">Agregar Producto</a>
+            <a href="/index.html" class="boton-item">Inicio</a>
         </nav>
         <main>
             <h1>LISTA DE VINOS </h1>
@@ -155,8 +155,8 @@
                     <div class="box-imagen"> <img src="/upload/${element.imagen}" alt="" class="img-item"> </div>
                     <div class="precio-item">$${element.precio}</div>
                     <div style="color: green">${stock}</div> 
-                    <a href="/private/update.html?id=${element.id}" class="boton-item">Editar</a>
-                    <a href="/private/delete.html?id=${element.id}" class="boton-item">Eliminar</a>
+                    <a href="/update.html?id=${element.id}" class="boton-item">Editar</a>
+                    <a href="/delete.html?id=${element.id}" class="boton-item">Eliminar</a>
                      `;
                     content.appendChild(product); 
                 });
