@@ -125,12 +125,29 @@
         display: block;
         text-align: center;
     }
+
+    .container nav button{
+        display: block;
+        margin-right: 32px;
+        border: none;
+        background-color: rgb(185, 133, 98);
+        color: white;
+        padding: 10px 15px !important;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        width: 150px;
+        cursor: pointer;
+    }
+
+
+
 </style>
 <body>
     <div class="container">
         <nav class="sidebar">
-            <a href="/crear.html" class="boton-item">Agregar Producto</a>
-            <a href="/index.html" class="boton-item">Inicio</a>
+            <a href="/private/crear.html" class="boton-item">Agregar Producto</a>
+            <button id="logout-button">Cerrar Sesión</button>
         </nav>
         <main>
             <h1>LISTA DE VINOS </h1>
@@ -161,6 +178,15 @@
                     content.appendChild(product); 
                 });
             })
+
+            document.getElementById('logout-button').addEventListener('click', () => {
+                fetch('/logout') // Accedemos a la ruta para eliminar la sesión 
+                    .then(()=>{
+                        window.location.href = '/'; // redireccionamos a la pagina 
+                    })
+
+            });
+
     </script>
 </body>
 </html>
