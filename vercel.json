@@ -1,0 +1,60 @@
+{
+    
+
+    "builds": [
+      {
+        "src": "./index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/register",
+        "dest": "/api/register"
+      },
+      {
+        "src": "/api/login",
+        "dest": "/api/login"
+      },
+      {
+        "src": "/api/productos",
+        "dest": "/api/productos"
+      },
+      {
+        "src": "/api/productos/:id",
+        "dest": "/api/productos/:id"
+      },
+      {
+        "src": "/api/productos/delete/:id",
+        "dest": "/api/productos/delete/:id"
+      },
+      {
+        "src": "/public/(.*)",
+        "dest": "/public/$1"
+      },
+      {
+        "src": "/css/(.*)",
+        "dest": "/public/css/$1"
+      },
+      {
+        "src": "/imagenes/(.*)",
+        "dest": "/public/imagenes/$1"
+      },
+      {
+        "src": "/img-publicidad/(.*)",
+        "dest": "/public/img-publicidad/$1"
+      },
+      {
+        "src": "/js/(.*)",
+        "dest": "/public/js/$1"
+      },
+
+      {
+        "src": "/(.*)",
+        "dest": "/public/$1"
+      }
+
+
+
+    ]
+  }
