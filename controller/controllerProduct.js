@@ -11,62 +11,134 @@ const obtenerProductos = async (req, res) =>{
     }
 }
 
+
+/// desde 
+
 const crearProductos = async (req, res) => {
+
     const {id, id_categoria, nombre, precio, descripcion, stock, imagen } = req.body;
+
     //const imagen = req.file.filename;  
+
     req.body.imagen = req.file.filename;  
+
     req.body.id_categoria = parseInt(req.body.id_categoria);
+
     req.body.precio = parseFloat(req.body.precio);
+
     req.body.stock = parseInt(req.body.stock);
+
     try{
+
         const connection = await pool.getConnection();
 
+
+
+
+
         if (req.body.id){
+
             const sql =`
+
                 UPDATE productos SET 
+
                     id_categoria = ?, 
+
                     nombre = ?, 
+
                     precio = ?, 
+
                     descripcion = ?, 
+
                     stock = ?, 
+
                     imagen = ? 
+
                 WHERE id = ?
+
             `;
+
             const values = [
+
                 req.body.id_categoria,
+
                 req.body.nombre,
+
                 req.body.precio,
+
                 req.body.descripcion,
+
                 req.body.stock,
+
                 req.body.imagen,
+
                 req.body.id // Agregar el ID al final del array de valores
+
             ];
+
             const [rows] = await connection.query(sql, values); 
+
             connection.release();
-            res.send('Producto actualizado correctamente.'); 
+
+            /* Enviamos un json a la respuesta del servidor para poder manejarlo */
+
+            if (rows.affectedRows > 0){
+
+                res.json({success: true, message: 'Producto Actualizado Correctamente'});
+
+            } else{
+
+                res.status(404).json({success: false, message: 'Error al actualizar el producto'}); 
+
+            }
+
         }else{
+
             const sql = `
+
                 INSERT INTO productos (id_categoria, nombre, precio, descripcion, stock, imagen) 
+
                 VALUES (?, ?, ?, ?, ?, ?)
+
             `;
+
             const values = [
+
                 req.body.id_categoria,
+
                 req.body.nombre,
+
                 req.body.precio,
+
                 req.body.descripcion,
+
                 req.body.stock,
+
                 req.body.imagen
+
             ];
+
             const [result] = await connection.query(sql, values); 
+
             connection.release();
-            res.send("Producto agregado");
+
+            res.json({success: true, message: 'Producto agregado correctamente'}); 
+
         }
+
     }catch(err){
+
         console.error('Se produjo un error al intentar cargar el producto:', err); 
-        res.status(500).send('Error al intentar cargar el producto'); 
+
+        res.status(500).json({success: false, message: 'Error al intentar cargar el producto'}); 
+
     }
+
     console.log(req.body);
-}; 
+
+};
+
+// aqui
 
 const verProducto = async (req, res)=>{
     const id = parseInt(req.params.id); 
